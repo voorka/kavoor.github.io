@@ -22,7 +22,7 @@ To select the edges to profile, we used Knuth's algorithm:
 
 ---
 <!-- ![](https://i.imgur.com/NbavLnq.png) -->
-<img src="array.png" style="max-width: 100%" >
+<img src="../../assets/array.png" style="max-width: 100%" >
 ---
 Essentially, this algorithm first finds the minimum spanning tree of the edges in a function and then adds profiling instrumentation---code that logs profiling information---to all edges not in the spanning tree. Note that this algorithm uses the first block in a function as the root of the spanning tree, and that edges are treated as bidirectional when checking for cycles.
 
@@ -48,8 +48,8 @@ As the profiling logic and data are written in a runtime library disjoint from t
 To measure performance, we ran a subset of C benchmarks from the [LLVM test suite](https://llvm.org/docs/TestSuiteGuide.html). We collected the tabulated results and CFGs to manually verify our instrumentation was on an optimal number of edges with correct edge counts. We ran the algorithm described above to extrapolate the uninstrumented edges. We include one test here for visibility.
 Consider the following CFGs for a program with two functions, main and testFunc.
  <!-- ![](https://i.imgur.com/h9Stzm2.png =300x) ![](https://i.imgur.com/ls7PM8e.png =300x)  -->
-<img src="main.png"/>
-<img src="testfunc.png"/>
+<img src="../../assets/main.png"/>
+<img src="../../assets/testfunc.png"/>
 We run our instrumented program with input argument `5` and procure the table below.
 
 | Edge     | Count |
@@ -115,7 +115,7 @@ On average, we found that adding profiling takes 5x longer than the unprofiled c
 Below are our performance results. The data has been normalized to the average runtime for each program's original code after LLVM `-O3`. This means that if a bar's height is 2, that stage's average runtime took 2x longer than the optimized but unprofiled code. 
 
 <!-- ![](https://i.imgur.com/uICyHTe.png) -->
-<img src="results.png" style="max-width: 100%" >
+<img src="../../assets/results.png" style="max-width: 100%" >
 
 A next step to further improve performance would be to place counters on edges that are less likely to be executed, decreasing the number of dynamic instructions. This can be done by additional profiling and then creating a maximum spanning tree using the estimated edge weights instead of an arbitrary spanning tree.
 
