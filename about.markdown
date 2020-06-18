@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img src="img/profile.jpg" alt="Profile" width="500">
+<img src="/assets/profile.jpg" alt="Profile" width="500">
 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
